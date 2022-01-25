@@ -34,12 +34,12 @@ public class FileHandler {
                 }
 
                 if (!noHandler) {
-                    line = line.replaceAll("：", ":")
-                            .replaceAll("（", "(")
-                            .replaceAll("）", ")")
-                            .replaceAll("。", ".")
-                            .replaceAll("，", ",")
-                            .replaceAll("、", ",");
+                    line = line.replaceAll("[ ]*：[ ]*", ": ")
+                               .replaceAll("[ ]*（[ ]*", " (")
+                               .replaceAll("[ ]*）[ ]*", ") ")
+                               .replaceAll("[ ]*。[ ]*", ". ")
+                               .replaceAll("[ ]*，[ ]*", ", ")
+                               .replaceAll("[ ]*、[ ]*", ", ");
                     if (line.matches("^#+.*$")) {
                         if (line.matches("^#+ {1}[0-9]+\\.{1}.* {1}.*$")) {
                             int splitIndex = line.indexOf(" ", line.lastIndexOf(".")) + 1;
@@ -109,7 +109,8 @@ public class FileHandler {
                  * 如果是中文,则在中间添加一个空格
                  * 如果是 字母 / () / 数字 / 空格, 则不做任何处理
                  */
-                if (this.checkEnglishAndNumber(charList[i], charList[i] == 41 || charList[i] == 93) && this.checkChinese(charList[i + 1])) {
+                boolean extendBoolean = charList[i] == 41 || charList[i] == 93 || charList[i] == 44 || charList[i] == 58 || charList[i] == 96;
+                if (this.checkEnglishAndNumber(charList[i], extendBoolean) && this.checkChinese(charList[i + 1])) {
                     sb.append(" ");
                     continue;
                 }
@@ -127,8 +128,8 @@ public class FileHandler {
                             ++i;
                         }
                     }
-
-                    if (this.checkEnglishAndNumber(charList[i + 1], charList[i + 1] == 40 || charList[i + 1] == 91)) {
+                    extendBoolean = charList[i + 1] == 40 || charList[i + 1] == 91 || charList[i + 1] == 96 || charList[i + 1] == 36;
+                    if (this.checkEnglishAndNumber(charList[i + 1], extendBoolean)) {
                         sb.append(" ");
                     }
                 }
