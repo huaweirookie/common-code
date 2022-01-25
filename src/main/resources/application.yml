@@ -1,0 +1,15 @@
+server:
+  port: 9999
+
+spring:
+  redis:
+    host: 192.168.99.100
+    port: 36379
+    password: 123456
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.99.100:33306/springdemo?useUnicode=true&characterEncoding=utf-8&relaxAutoCommit=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+
