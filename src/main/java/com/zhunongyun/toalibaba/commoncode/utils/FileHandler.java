@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class FileHandler {
 
-    private final static String FILE_PATH = "D:\\code\\idea_workspace\\toalibaba\\common-code\\src\\main\\resources\\";
+    private final static String FILE_PATH = "D:\\code\\idea_workspace\\common-code\\src\\main\\resources\\";
 
     private final static Pattern ENGLISH_HANDLER_PATTERN = Pattern.compile("[a-zA-z0-9\\(\\)]");
 
