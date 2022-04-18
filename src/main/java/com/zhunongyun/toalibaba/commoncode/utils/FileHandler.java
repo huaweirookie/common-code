@@ -1,5 +1,7 @@
 package com.zhunongyun.toalibaba.commoncode.utils;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.io.*;
 import java.net.URL;
 import java.util.regex.Pattern;
@@ -10,7 +12,9 @@ import java.util.regex.Pattern;
  */
 public class FileHandler {
 
-    private final static String FILE_PATH = "D:\\code\\idea_workspace\\common-code\\src\\main\\resources\\";
+    private volatile int da = 0;
+
+    private final static String FILE_PATH = "D:\\code\\idea_workspace\\toalibaba\\common-code\\src\\main\\resources\\";
 
     private final static Pattern ENGLISH_HANDLER_PATTERN = Pattern.compile("[a-zA-z0-9\\(\\)]");
 
@@ -161,6 +165,6 @@ public class FileHandler {
     public static void main(String[] args) throws IOException {
         FileHandler fileHandler = new FileHandler();
         fileHandler.file();
-        System.out.println("执行成功");
+        System.out.println("执行成功:" + DateFormatUtils.format(System.currentTimeMillis(), "yyyy-MM-dd hh:mm"));
     }
 }
